@@ -1,5 +1,5 @@
 function _each(array, iteratee) {
-  for(var i = 1; i < array.length; i++) {
+  for(var i = 0; i < array.length; i++) {
     iteratee(array[i]);
   }
 
@@ -8,20 +8,20 @@ function _each(array, iteratee) {
 
 function _filter(array, predicate) {
   var newList = [];
-  for (var i = 1; i < array.length; i++) {
-    if (predicate(array[i])) {
-      newList.push(array[i]);
+  _each(array, function(value) {
+    if (predicate(value)) {
+      newList.push(value)
     }
-  }
+  })
 
   return newList;
 }
 
 function _map(array, mapper) {
   var newList = [];
-  for (var i = 1; i < array.length; i++) {
-    newList.push(mapper(array[i]))
-  }
+  _each(array, function(value) {
+    newList.push(mapper(value))
+  })
 
   return newList;
 }

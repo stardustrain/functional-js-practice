@@ -38,7 +38,7 @@
 
 4. 내부 다형성  
 	* function의 보조 함수는 **call back이 아니며**, 실질적으로 값을 어떻게 다룰지를 결정한다.  
- 	* 그렇기 때문에, 개발자가 함수에 넣을 array 혹은 array like한 객체를 보고 자유롭게 보조 함수를 만둘 수 있다. 
+ 	* 그렇기 때문에, 개발자가 함수에 넣을 array 혹은 array like object를 보고 자유롭게 보조 함수를 만들 수 있다. 
 
 ## 3. Functions
 * _each

@@ -25,3 +25,11 @@ function _map(array, mapper) {
 
   return newList;
 }
+
+function _curry(fn) {
+  return function (a) {
+    return function (b) {
+      return fn(a, b)
+    }
+  }
+}

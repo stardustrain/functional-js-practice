@@ -44,3 +44,19 @@
 * _each
 * _filter
 * _map
+* _curry
+  ```javascript
+  const addMaker = function(a) {
+    return function(b) {
+      return a + b
+    }
+  }
+  const add10 = addmaker(10)
+  add10(5) // 15
+  
+  const add = _curry(function(a, b) {
+    return a + b
+  }
+  
+  add(10)(5) // 15
+  ```

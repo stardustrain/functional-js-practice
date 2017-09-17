@@ -52,11 +52,46 @@
     }
   }
   const add10 = addmaker(10)
-  add10(5) // 15
+  add10(5) // print 15
   
   const add = _curry(function(a, b) {
     return a + b
-  }
+  });
   
-  add(10)(5) // 15
+  add(10)(5) // print 15  
+  ```  
+  
+* _curryr
+  ```javascript
+  const sub = _curry(function(a, b) {
+    return a - b
+  });
+
+  const sub10 = sub(10)
+  sub10(5) // print 5
+  // 계산결과는 맞지만, 함수의 이름과 문맥상 5 - 10이 되어 -5가 나와야 함.
+  // 따라서, 파라미터를 오른쪽 부터 적용하는 curryr 함수가 필요함.
+
+  // curryr을 통해 아래와 같이 refactoring도 가능함.
+  // 1. map 함수
+  _map(
+    _filter(users, function(user) { return user.age < 30; }), 
+    function(user) { return user.name });
+  // 2 . define _get
+  const _curryr = function(fn) {
+    return function(a, b) {
+      arguments.length === 2 ? fn(a, b) : function(b) { return fn(b, a); } 
+    }
+  }
+  const _get = _curryr(function(obj, key){
+    return obj === null ? undefined : obj[key];
+  }); 
+  // 3. _get적용
+  _map(
+    _filter(users, function(user) { return user.age < 30; }), 
+    _get('name'));
+  // 4. 아래의 코드와 같음
+  _map(
+    _filter(users, function(user) { return user.age < 30; }), 
+    function(obj) { return obj === null ? undefined : obj['name']; });
   ```

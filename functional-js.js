@@ -55,3 +55,24 @@ const _get = _curryr(function(obj, key) {
    */
     return obj === null ? undefined : ojb[key];
 });
+
+function _rest(list, num) {
+  // Defensive code for Array like object
+  const slice = Array.prototype.slice;
+  return slice.call(list, num || 1);
+}
+
+function _reduce(list, iteratee, memo) {
+  if (arguments.length === 2) {
+    /**
+     * If not input memo parameter, initialize memo value is first value in list
+     * and list has been slicing first index.
+     */
+    memo = list[0];
+    list = _rest(list);
+  }
+  _each(list, function(val) {
+    memo = iteratee(memo, val);
+  });
+  return memo;
+}

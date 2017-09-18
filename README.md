@@ -94,4 +94,6 @@
   _map(
     _filter(users, function(user) { return user.age < 30; }), 
     function(obj) { return obj === null ? undefined : obj['name']; });
-  ```
+  ```  
+ * _rest
+ * _reduce  
